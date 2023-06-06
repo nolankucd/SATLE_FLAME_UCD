@@ -75,6 +75,31 @@ Here an image texture is mapped to the cloth which faithfully follows the materi
 <p>
 What if you want more control over the animation? Using JavaScript it is possible to control playback with a simple slider.
 </p>
+<model-viewer 
+    id="compressor-demo"
+    src="https://nolankucd.github.io/FLAME/compressor.glb"
+    scale="0.2 0.2 0.2"
+    autoplay animation-name="spin" 
+    ar 
+    ar-scale="auto" 
+    camera-controls
+    alt="A compressor"
+    xr-environment
+    background-color="#ffffff">
+    <button slot="ar-button">
+      🔥 View in AR 🔥
+    </button>
+</model-viewer>
+    <div class="controls">
+        <div>
+            <p>Speed: <span id="speed-value"></span></p>
+            <input id="speed" type="range" style="width: 400px;" style="width: 100px;" min="0" max="1" step="0.01" value="1">
+        </div>
+        <div>
+            <p>Twist: <span id="twist-value"></span></p>
+            <input id="twist" type="range" style="width: 400px;" style="width: 100px;" min="0" max="2" step="0.01" value="0">
+        </div>
+    </div>
     
 <script type="module">
 const modelViewer = document.querySelector("#interactive-UCD-logo");
@@ -90,5 +115,34 @@ modelViewer.interactionPrompt = 'none';
 const modelViewer = document.querySelector("#cloth-animation-demo");
 modelViewer.interactionPrompt = 'none';
 </script>
-    
+
+<script type="module">
+const modelViewer = document.querySelector("#compressor-demo");
+const speedSlider = document.querySelector("#speed");
+const twistSlider = document.querySelector("#twist");
+
+modelViewer.interactionPrompt = 'none';
+
+speedSlider.addEventListener("input", (event) => {
+  modelViewer.animationName = 'spin';
+  modelViewer.timeScale = event.target.value;
+  modelViewer.play();
+});
+
+twistSlider.addEventListener('input', event => {
+  modelViewer.animationName = 'twist';
+  modelViewer.timeScale = 1;
+  modelViewer.currentTime = event.target.value;
+  modelViewer.pause();
+});
+
+
+const play = () => {
+  modelViewer.play();
+};
+
+modelViewer.addEventListener('load', play);
+modelViewer.addEventListener('finished', play);
+
+</script>
 </body>
