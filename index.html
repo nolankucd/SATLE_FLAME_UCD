@@ -42,7 +42,7 @@
     ar 
     ar-scale="auto" 
     camera-controls
-    field-of-view="35deg"
+    field-of-view="85deg"
     alt="A compressor"
     xr-environment
     background-color="#ffffff">
@@ -51,25 +51,11 @@
 
 
 <script type="module">
-const modelViewer = document.querySelector("#compressor-demo");
+const modelViewer = document.querySelector("#interactive-UCD-logo");
 const speedSlider = document.querySelector("#speed");
 const twistSlider = document.querySelector("#twist");
 
 modelViewer.interactionPrompt = 'none';
-
-speedSlider.addEventListener("input", (event) => {
-  modelViewer.animationName = 'KeyAction';
-  modelViewer.timeScale = event.target.value;
-  modelViewer.play();
-});
-
-
-const play = () => {
-  modelViewer.play();
-};
-
-modelViewer.addEventListener('load', play);
-modelViewer.addEventListener('finished', play);
 
 </script>
 </body>
