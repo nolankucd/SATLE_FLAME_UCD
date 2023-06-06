@@ -1,3 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>FLAME, a SATLE funded project bringing interactive 3D to teaching and learning</title>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+</head>
+<style>
+    model-viewer {
+     width: 600px;
+     height: 400px;
+     }
+     input[type=range]::-webkit-slider-thumb {
+     height : 75px;
+     width : 75px;
+     }
+</style>
+    
 <model-viewer src="UCD_logo.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster.png" shadow-intensity="1" camera-orbit="9deg 86deg 26.88m" field-of-view="32.81deg">
     <div class="progress-bar hide" slot="progress-bar">
         <div class="update-bar"></div>
