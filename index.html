@@ -7,34 +7,47 @@
     <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
 </head>
 <style>
+   body {
+       margin: 0;
+       padding: 20px;
+       font-family: Arial, sans-serif;
+     }
+    .container {
+       max-width: 800px;
+       margin: 0 auto;
+     }
      model-viewer {
-     width: 800px;
-     height: 400px;
+       width: 800px;
+       height: 400px;
      }
      input[type=range]::-webkit-slider-thumb {
-     height : 75px;
-     width : 75px;
+       height : 75px;
+       width : 75px;
      }
-     button {
-        padding: 20px;
-        width: 300px;
-        text-align: center;
-        font-size: 28px;
-        background-color: transparent;
-        border-radius: 4px;
-        border: none;
-        position: absolute;
-        top: 16px;
-        right: 16px;
-      }
+     #play-pause {
+       position: absolute;
+       top: 10px;
+       left: 10px;
+       z-index: 1;
+     .hotspot {
+       position: absolute;
+       width: 30px;
+       height: 30px;
+       background-color: white;
+       border-radius: 50%;
+  }
 </style>
     
 <body>
+<div class="container">
 <h1>🔥 FLAME, a SATLE funded project bringing interactive 3D to teaching and learning</h1>
 <p>This project aims to give educators the capability needed to create 3D interactive learning experiences.
     Complex or abstract ideas across domians can be represented in 3D, manipiuated, animated and explored to enhance learning.
     Try and grab the UCD logo and give it a spin.
 </p>
+</div>
+
+<div class="container">
 <model-viewer 
     id="interactive-UCD-logo"
     src="https://nolankucd.github.io/SATLE_FLAME_UCD/UCD_logo.glb"
@@ -43,48 +56,54 @@
     field-of-view="35deg"
     auto-rotate>
 </model-viewer>
-
+</div
+>
+<div class="container">
 <p>Simple animaitons using translation and rotation can be used to explore the behaviour of mechanical systems such as this internal combustion engine.
     You can use your mouse, fingers or trackpad to pan, rotate and zoom on the model and take a closer look.
     Hold the shift key while dragging the mouse to pan, scroll your mouse wheel or use your usual zoom gesture to zoom in.
 </p>
+<div style="position: relative;">
+  <button id="play-pause" style="padding: 10px;">Pause</button>
+</div>
+<div class="container">
 <model-viewer 
     id="rigid-animation-demo"
     src="https://nolankucd.github.io/SATLE_FLAME_UCD/engine.glb"
     autoplay 
-    ar 
-    ar-scale="auto" 
     camera-controls
     alt="A simple four cylinder engine"
-    xr-environment
     background-color="#ffffff">
 </model-viewer>
- <div class="controls">
-    <button id="playPauseButton" onclick="togglePlayPause()">Play/Pause</button>
- </div>
+</div>
 
-    
+<div class="container">
 <p>Deformation can also be presented to help students understand the complexity of objects that change shape.
 Here the Stanford Bunny 3D model is revealed from under a cloth.
 Here an image texture is mapped to the cloth which faithfully follows the material deformation.
 </p>
+</div>
+
+<div class="container">
 <model-viewer 
     id="cloth-animation-demo"
     src="https://nolankucd.github.io/SATLE_FLAME_UCD/cloth_bunny.glb"
     autoplay animation-name="KeyAction" 
-    ar 
-    ar-scale="auto" 
     camera-controls
     camera-orbit="20deg 45deg 2m"
     field-of-view="24deg"
     alt="Revealing the Stanford Bunny"
-    xr-environment
     background-color="#ffffff">
 </model-viewer>
+</div>
 
+<div class="container">
 <p>
-What if you want more control over the animation? Using JavaScript it is possible to control playback with a simple slider.
+What if you want more control over the animation? Using JavaScript it is possible to control playback with a simple slider. You can also view the moded in Augmented Reality on your phone or tablet.
 </p>
+</div>
+
+<div class="container">
 <model-viewer 
     id="compressor-demo"
     src="https://nolankucd.github.io/FLAME/compressor.glb"
@@ -100,6 +119,8 @@ What if you want more control over the animation? Using JavaScript it is possibl
       🔥 View in AR 🔥
     </button>
 </model-viewer>
+</div>
+
 <div class="controls">
     <div>
         <p>Speed: <span id="speed-value"></span></p>
@@ -110,7 +131,33 @@ What if you want more control over the animation? Using JavaScript it is possibl
         <input id="twist" type="range" style="width: 400px;" style="width: 100px;" min="0" max="2" step="0.01" value="0">
     </div>
 </div>
-    
+
+<div class="container">
+<p>This example allows the viewer to orientate and inspect a complex motion due to wind loading on a bridge deck.
+The addtion of text hotspots offers a guided experience.
+</p>
+</div>
+
+<div class="container">
+<model-viewer 
+    id="bridge-demo"
+    src="https://nolankucd.github.io/FLAME/bridge.glb"
+    scale="0.1 0.1 0.1"
+    camera-controls
+    autoplay
+    camera-orbit="-40deg 75deg 2.5m" field-of-view="20deg"
+    alt="Bridge"
+    background-color="#ffffff">
+    <button class="Hotspot" slot="hotspot-0" data-surface="2 0 809 4007 833 0.671 0.222 0.107" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Dynamic hotspots</div>
+    </button>
+    <button class="Hotspot" slot="hotspot-1" data-surface="4 0 0 3 2 0.510 0.05 0.030" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">UCD Branding</div>
+    </button>
+</model-viewer>
+</div>
+
+
 <script type="module">
 const modelViewer = document.querySelector("#interactive-UCD-logo");
 modelViewer.interactionPrompt = 'none';
@@ -118,16 +165,22 @@ modelViewer.interactionPrompt = 'none';
 
 <script type="module">
 const modelViewer = document.querySelector("#rigid-animation-demo");
-modelViewer.interactionPrompt = 'none';
-    
-function togglePlayPause() {
+const playPauseButton = document.querySelector("#play-pause");
 
-if (modelViewer.paused) {
-  modelViewer.play();
-} else {
-  modelViewer.pause();
-}
-}
+modelViewer.interactionPrompt = 'none';
+
+playPauseButton.addEventListener("click", () => {
+  if (modelViewer.paused) {
+    modelViewer.play();
+    playPauseButton.textContent = "Pause";
+  } else {
+    modelViewer.pause();
+    playPauseButton.textContent = "Play";
+  }
+});
+
+
+modelViewer.pause();
 </script>
     
 <script type="module">
@@ -164,4 +217,10 @@ modelViewer.addEventListener('load', play);
 modelViewer.addEventListener('finished', play);
 </script>
 
+<script type="module">
+const modelViewer = document.querySelector("#bridge-demo");
+modelViewer.interactionPrompt = 'none';
+</script>
+
 </body>
+
