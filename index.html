@@ -59,6 +59,8 @@
     xr-environment
     background-color="#ffffff">
 </model-viewer>
+<button id="playPauseButton" onclick="togglePlayPause()">Play/Pause</button>
+
     
 <p>Deformation can also be presented to help students understand the complexity of objects that change shape.
 Here the Stanford Bunny 3D model is revealed from under a cloth.
@@ -115,6 +117,15 @@ modelViewer.interactionPrompt = 'none';
 <script type="module">
 const modelViewer = document.querySelector("#rigid-animation-demo");
 modelViewer.interactionPrompt = 'none';
+    
+function togglePlayPause() {
+
+if (modelViewer.paused) {
+  modelViewer.play();
+} else {
+  modelViewer.pause();
+}
+}
 </script>
     
 <script type="module">
@@ -149,6 +160,6 @@ const play = () => {
 
 modelViewer.addEventListener('load', play);
 modelViewer.addEventListener('finished', play);
-
 </script>
+
 </body>
