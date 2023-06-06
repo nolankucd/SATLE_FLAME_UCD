@@ -59,7 +59,9 @@
     xr-environment
     background-color="#ffffff">
 </model-viewer>
-<button id="playPauseButton" onclick="togglePlayPause()">Play/Pause</button>
+ <div class="controls">
+    <button id="playPauseButton" onclick="togglePlayPause()">Play/Pause</button>
+ </div>
 
     
 <p>Deformation can also be presented to help students understand the complexity of objects that change shape.
@@ -98,16 +100,16 @@ What if you want more control over the animation? Using JavaScript it is possibl
       🔥 View in AR 🔥
     </button>
 </model-viewer>
-    <div class="controls">
-        <div>
-            <p>Speed: <span id="speed-value"></span></p>
-            <input id="speed" type="range" style="width: 400px;" style="width: 100px;" min="0" max="1" step="0.01" value="1">
-        </div>
-        <div>
-            <p>Twist: <span id="twist-value"></span></p>
-            <input id="twist" type="range" style="width: 400px;" style="width: 100px;" min="0" max="2" step="0.01" value="0">
-        </div>
+<div class="controls">
+    <div>
+        <p>Speed: <span id="speed-value"></span></p>
+        <input id="speed" type="range" style="width: 400px;" style="width: 100px;" min="0" max="1" step="0.01" value="1">
     </div>
+    <div>
+        <p>Twist: <span id="twist-value"></span></p>
+        <input id="twist" type="range" style="width: 400px;" style="width: 100px;" min="0" max="2" step="0.01" value="0">
+    </div>
+</div>
     
 <script type="module">
 const modelViewer = document.querySelector("#interactive-UCD-logo");
