@@ -8,7 +8,7 @@
 </head>
 <style>
     model-viewer {
-     width: 600px;
+     width: 800px;
      height: 400px;
      }
      input[type=range]::-webkit-slider-thumb {
@@ -20,13 +20,58 @@
 <body>
 <h1>🔥 FLAME, a SATLE funded project bringing interactive 3D to teaching and learning</h1>
 
-<model-viewer src="https://nolankucd.github.io/SATLE_FLAME_UCD/UCD_logo.glb"
-              camera-controls
-              camera-orbit="9deg 86deg 26.88m"
-              field-of-view="32.81deg">
+<model-viewer 
+    id="interactive-UCD-logo"
+    src="https://nolankucd.github.io/SATLE_FLAME_UCD/UCD_logo.glb"
+    camera-controls
+    camera-orbit="9deg 86deg 26.88m"
+    field-of-view="32.81deg"
+    auto-rotate>
     <div class="progress-bar hide" slot="progress-bar">
         <div class="update-bar"></div>
     </div>
 </model-viewer>
 
+<p>Create exciting and engaging interacive experiences</p>
+<model-viewer 
+    id="cloth-animation-demo"
+    src="https://nolankucd.github.io/Fluid_Mechanics/cloth.glb"
+    autoplay animation-name="KeyAction" 
+    ar 
+    ar-scale="auto" 
+    camera-controls
+    alt="A compressor"
+    xr-environment
+    background-color="#ffffff">
+</model-viewer>
+    <div class="controls">
+        <div>
+            <p>Speed: <span id="speed-value"></span></p>
+            <input id="speed" type="range" style="width: 400px;" style="width: 100px;" min="-1" max="1" step="0.01" value="1">
+        </div>
+    </div>
+
+
+<script type="module">
+const modelViewer = document.querySelector("#compressor-demo");
+const speedSlider = document.querySelector("#speed");
+const twistSlider = document.querySelector("#twist");
+
+modelViewer.interactionPrompt = 'none';
+
+speedSlider.addEventListener("input", (event) => {
+  modelViewer.animationName = 'KeyAction';
+  modelViewer.timeScale = event.target.value;
+  modelViewer.play();
+});
+
+
+const play = () => {
+  modelViewer.play();
+};
+
+modelViewer.addEventListener('load', play);
+modelViewer.addEventListener('finished', play);
+
+</script>
 </body>
