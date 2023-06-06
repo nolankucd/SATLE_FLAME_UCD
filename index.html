@@ -41,7 +41,22 @@
     </div>
 </model-viewer>
 
-<p>Simple animaitons such as translation and rotation as well as complex defomrations.</p>
+<p>Simple animaitons such as translation and rotation can be used to explore the behaviour of mechanical systems.</p>
+<model-viewer 
+    id="cloth-animation-demo"
+    src="https://nolankucd.github.io/SATLE_FLAME_UCD/engine.glb"
+    autoplay animation-name="KeyAction" 
+    ar 
+    ar-scale="auto" 
+    camera-controls
+    camera-orbit="10deg 65deg 6m"
+    field-of-view="24deg"
+    alt="Revealing the Stanford Bunny"
+    xr-environment
+    background-color="#ffffff">
+</model-viewer>
+    
+<p>Deformation can also be presented to help students understand the complexity of objects with changing shape.</p>
 <model-viewer 
     id="cloth-animation-demo"
     src="https://nolankucd.github.io/SATLE_FLAME_UCD/cloth_bunny.glb"
@@ -49,7 +64,7 @@
     ar 
     ar-scale="auto" 
     camera-controls
-    camera-orbit="10deg 86deg 6m"
+    camera-orbit="10deg 65deg 6m"
     field-of-view="24deg"
     alt="Revealing the Stanford Bunny"
     xr-environment
