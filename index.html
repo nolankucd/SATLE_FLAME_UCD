@@ -26,7 +26,7 @@
     id="interactive-UCD-logo"
     src="https://nolankucd.github.io/SATLE_FLAME_UCD/UCD_logo.glb"
     camera-controls
-    camera-orbit="9deg 86deg 16m"
+    camera-orbit="10deg 86deg 16m"
     field-of-view="35deg"
     auto-rotate>
     <div class="progress-bar hide" slot="progress-bar">
@@ -42,20 +42,15 @@
     ar 
     ar-scale="auto" 
     camera-controls
-    field-of-view="85deg"
-    alt="A compressor"
+    camera-orbit="10deg 86deg 16m"
+    field-of-view="24deg"
+    alt="Revealing the Stanford Bunny"
     xr-environment
     background-color="#ffffff">
 </model-viewer>
 
-
-
 <script type="module">
 const modelViewer = document.querySelector("#interactive-UCD-logo");
-const speedSlider = document.querySelector("#speed");
-const twistSlider = document.querySelector("#twist");
-
 modelViewer.interactionPrompt = 'none';
-
 </script>
 </body>
