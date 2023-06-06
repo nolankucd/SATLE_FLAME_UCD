@@ -39,7 +39,8 @@
 </model-viewer>
 
 <p>Simple animaitons using translation and rotation can be used to explore the behaviour of mechanical systems such as this internal combustion engine.
-    You can use your mouse or trackpad to pan, rotate and zoom on the model and take a closer look.
+    You can use your mouse, fingers or trackpad to pan, rotate and zoom on the model and take a closer look.
+    Hold the shift key while dragging the mouse to pan, scroll your mouse wheel or use your usual zoom gesture to zoom in.
 </p>
 <model-viewer 
     id="rigid-animation-demo"
@@ -54,7 +55,8 @@
 </model-viewer>
     
 <p>Deformation can also be presented to help students understand the complexity of objects that change shape.
-Here the Stanford Bunny 3D model is revealed from under a cloth.   
+Here the Stanford Bunny 3D model is revealed from under a cloth.
+Here an image texture is mapped to the cloth which faithfully follows the material deformation.
 </p>
 <model-viewer 
     id="cloth-animation-demo"
@@ -70,6 +72,10 @@ Here the Stanford Bunny 3D model is revealed from under a cloth.
     background-color="#ffffff">
 </model-viewer>
 
+<p>
+What if you want more control over the animation? Using JavaScript it is possible to control playback with a simple slider.
+</p>
+    
 <script type="module">
 const modelViewer = document.querySelector("#interactive-UCD-logo");
 modelViewer.interactionPrompt = 'none';
