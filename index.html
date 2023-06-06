@@ -7,7 +7,12 @@
     <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
 </head>
 <style>
-
+     p {
+     margin-top: 100px;
+     margin-bottom: 100px;
+     margin-right: 150px;
+     margin-left: 80px;
+     }
      model-viewer {
      width: 800px;
      height: 400px;
@@ -19,8 +24,6 @@
 </style>
     
 <body>
-width:800px;
-margin:0 auto;
 <h1>🔥 FLAME, a SATLE funded project bringing interactive 3D to teaching and learning</h1>
 <p>This project aims to give educators the capability needed to create 3D interactive learning experiences.
     Complex or abstract ideas across domians can be represented in 3D, manipiuated, animated and explored to enhance learning.
@@ -32,7 +35,7 @@ margin:0 auto;
     camera-orbit="10deg 86deg 16m"
     field-of-view="35deg"
     auto-rotate
-    rotation-per-second="6000">
+    rotation-per-second="9000">
     <div class="progress-bar hide" slot="progress-bar">
         <div class="update-bar"></div>
     </div>
@@ -57,4 +60,10 @@ margin:0 auto;
 const modelViewer = document.querySelector("#interactive-UCD-logo");
 modelViewer.interactionPrompt = 'none';
 </script>
+    
+<script type="module">
+const modelViewer = document.querySelector("#cloth-animation-demo");
+modelViewer.interactionPrompt = 'none';
+</script>
+    
 </body>
