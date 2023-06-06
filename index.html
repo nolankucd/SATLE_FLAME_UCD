@@ -7,7 +7,10 @@
     <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
 </head>
 <style>
-    model-viewer {
+     div {
+     max-width: 800px;
+     }
+     model-viewer {
      width: 800px;
      height: 400px;
      }
@@ -28,7 +31,8 @@
     camera-controls
     camera-orbit="10deg 86deg 16m"
     field-of-view="35deg"
-    auto-rotate>
+    auto-rotate
+    rotation-per-second="6000">
     <div class="progress-bar hide" slot="progress-bar">
         <div class="update-bar"></div>
     </div>
@@ -42,7 +46,7 @@
     ar 
     ar-scale="auto" 
     camera-controls
-    camera-orbit="10deg 86deg 16m"
+    camera-orbit="10deg 86deg 6m"
     field-of-view="24deg"
     alt="Revealing the Stanford Bunny"
     xr-environment
