@@ -78,12 +78,17 @@ Try and grab the UCD logo and give it a spin.
 </div
 >
 <div class="container">
-<p>This simple example shows how a static object can be manuipulated and explored to give new insights. You can scroll or pinch to zoom or hold the shift key, or drag with two fingers to pan the model.
-    This lets us explore the gold material on the logo's harp.
-    We are all familar with the power of 3D animation in movies and games. 
-    Simple animaitons using translation and rotation can be used to explore the behaviour of mechanical systems such as this internal combustion engine.
-    You can use your mouse, fingers or trackpad to pan, rotate and zoom on the model and take a closer look.
-    Hold the shift key while dragging the mouse to pan, scroll your mouse wheel or use your usual zoom gesture to zoom in.
+<p>This simple demo shows how a static object can be manuipulated and explored to give new insights into shape and form.
+    You can scroll or pinch to zoom. Hold the shift key, or drag with two fingers to pan the model.
+    You can admire the gold material used on the logo's harp for example.
+    
+    We are all familar with the power of 3D animation in movies and games and it can look very complicated at first glance.
+    However, most animation comprises three simple transformations: translation, rotation and scale.
+    Simple animations using just translation and rotation can be used to explore the behaviour of rigid mechanical systems such as this approximation of an internal combustion engine.
+    The translating pistons cause the crank shaft to rotate via the connecting rods.
+    Rotating the model to the side shows the inline arrangement of the pistons
+    The addition of a play/pause button allows for further exploration during the combustion cycle.
+    Additions to this model may be added to further build understanding of the four stroke cycle.
 </p>
 <div style="position: relative;">
   <button id="play-pause" style="padding: 10px;">Pause</button>
@@ -100,9 +105,11 @@ Try and grab the UCD logo and give it a spin.
 </div>
 
 <div class="container">
-<p>Deformation can also be presented to help students understand the complexity of objects that change shape.
-Here the Stanford Bunny 3D model is revealed from under a cloth.
-Here an image texture is mapped to the cloth which faithfully follows the material deformation.
+<p>While the combinatin of translation, rotation and scale is powerful many systems we wish to teach about undergo complex deformation.
+    Biological systems are comprised of soft matter, metals bend under load, and fabric deform.
+    Using the same tools, deformation can also be presented to help students understand the complexity of objects that change shape.
+    Here the Stanford Bunny 3D scan is revealed from under a deforming cloth. An image texture is mapped to the cloth which faithfully follows the material deformation.
+    Data from numerical simulation of deforming systems can be imported and displayed just like this example.
 </p>
 </div>
 
@@ -120,8 +127,27 @@ Here an image texture is mapped to the cloth which faithfully follows the materi
 </div>
 
 <div class="container">
-<p>
-What if you want more control over the animation? Using JavaScript it is possible to control playback with a simple slider. You can also view the moded in Augmented Reality on your phone or tablet.
+<model-viewer 
+    id="cloth-control-demo"
+    src="https://nolankucd.github.io/SATLE_FLAME_UCD/cloth_bunny.glb"
+    autoplay animation-name="KeyAction" 
+    camera-controls
+    camera-orbit="20deg 45deg 2m"
+    field-of-view="24deg"
+    alt="Revealing the Stanford Bunny"
+    background-color="#ffffff">
+</model-viewer>
+</div>
+<div class="controls">
+    <div>
+        <p>Scrub to select time: <span id="scrub-value"></span></p>
+        <input id="scrub" type="range" style="width: 400px;" style="width: 100px;" min="0" max="8.3" step="0.01" value="0">
+    </div>
+</div>
+    
+<div class="container">
+<p>What if you want more control over the animation? What if you want to scrub it like a video?
+    Using JavaScript it is possible to control playback with a simple slider. You can also view the moded in Augmented Reality on your phone or tablet.
 </p>
 </div>
 
@@ -186,7 +212,7 @@ The funding will focus on innovations in education for sustainable development, 
 </div>
     
 <div class="container">
-    <img src="https://www.teachingandlearning.ie/wp-content/uploads/preview_twitter-copy.png" width="200" height=auto alt="SATLE">
+    <img src="https://www.teachingandlearning.ie/wp-content/uploads/preview_twitter-copy.png" width="500" height=auto alt="SATLE">
 </div>
 
 <script type="module">
@@ -210,7 +236,6 @@ playPauseButton.addEventListener("click", () => {
   }
 });
 
-
 modelViewer.pause();
 </script>
     
@@ -219,6 +244,28 @@ const modelViewer = document.querySelector("#cloth-animation-demo");
 modelViewer.interactionPrompt = 'none';
 </script>
 
+<script type="module">
+const modelViewer = document.querySelector("#cloth-control-demo");
+const scrubSlider = document.querySelector("#scrub");
+
+modelViewer.interactionPrompt = 'none';
+
+scrubSlider.addEventListener('input', event => {
+  modelViewer.animationName = 'Key.001Action';
+  modelViewer.timeScale = 1;
+  modelViewer.currentTime = event.target.value;
+  modelViewer.pause();
+});
+
+
+const play = () => {
+  modelViewer.play();
+};
+
+modelViewer.addEventListener('load', play);
+modelViewer.addEventListener('finished', play);
+</script>
+    
 <script type="module">
 const modelViewer = document.querySelector("#compressor-demo");
 const speedSlider = document.querySelector("#speed");
