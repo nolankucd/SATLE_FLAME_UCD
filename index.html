@@ -97,9 +97,7 @@ Try and grab the UCD logo and give it a spin.
     The addition of a play/pause button allows for further exploration during the combustion cycle.
     Additions to this model may be added to further build understanding of the four stroke cycle.
 </p>
-<div style="position: relative;">
-  <button id="play-pause" style="padding: 10px;">Pause</button>
-</div>
+
 <div class="container">
 <model-viewer 
     id="rigid-animation-demo"
@@ -110,7 +108,10 @@ Try and grab the UCD logo and give it a spin.
     background-color="#ffffff">
 </model-viewer>
 </div>
-
+<div style="position: relative;">
+  <button id="play-pause" style="padding: 10px;">Pause</button>
+</div>
+    
 <div class="container">
 <p>While the combinatin of translation, rotation and scale is powerful many systems we wish to teach about undergo complex deformation.
     Biological systems are comprised of soft matter, metals bend under load, and fabric deform.
@@ -133,7 +134,7 @@ Try and grab the UCD logo and give it a spin.
 </model-viewer>
 </div>
 <div style="position: relative;">
-  <button id="play-pause-cloth" style="padding: 10px;">Pause</button>
+  <button id="play-pause-cloth" style="padding: 10px;">Play/Pause</button>
 </div>
 <div class="controls">
     <div>
@@ -246,10 +247,8 @@ modelViewer.interactionPrompt = 'none';
 playPauseButton.addEventListener("click", () => {
   if (modelViewer.paused) {
     modelViewer.play();
-    playPauseButton.textContent = "Pause";
   } else {
     modelViewer.pause();
-    playPauseButton.textContent = "Play";
   }
 });
 
