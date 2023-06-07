@@ -29,13 +29,20 @@
        top: 10px;
        left: 10px;
        z-index: 1;
+     }
+     #play-pause-cloth {
+       position: absolute;
+       top: 10px;
+       left: 10px;
+       z-index: 1;
+     }
      .hotspot {
        position: absolute;
        width: 30px;
        height: 30px;
        background-color: white;
        border-radius: 50%;
-  }
+     }
 </style>
     
 <body>
@@ -125,10 +132,13 @@ Try and grab the UCD logo and give it a spin.
     background-color="#ffffff">
 </model-viewer>
 </div>
+<div style="position: relative;">
+  <button id="play-pause-cloth" style="padding: 10px;">Pause</button>
+</div>
 <div class="controls">
     <div>
         <p>Scrub to select time: <span id="scrub-value"></span></p>
-        <input id="scrub" type="range" style="width: 400px;" style="width: 100px;" min="0" max="8.3" step="0.01" value="0">
+        <input id="scrub" type="range" style="width: 800px;" style="width: 100px;" min="0" max="8.3" step="0.01" value="0">
     </div>
 </div>
     
@@ -229,8 +239,19 @@ modelViewer.pause();
 <script type="module">
 const modelViewer = document.querySelector("#cloth-animation-demo");
 const scrubSlider = document.querySelector("#scrub");
+const playPauseButton = document.querySelector("#play-pause-cloth");
 
 modelViewer.interactionPrompt = 'none';
+
+playPauseButton.addEventListener("click", () => {
+  if (modelViewer.paused) {
+    modelViewer.play();
+    playPauseButton.textContent = "Pause";
+  } else {
+    modelViewer.pause();
+    playPauseButton.textContent = "Play";
+  }
+});
 
 scrubSlider.addEventListener('input', event => {
   modelViewer.animationName = 'Key.001Action';
@@ -238,7 +259,6 @@ scrubSlider.addEventListener('input', event => {
   modelViewer.currentTime = event.target.value;
   modelViewer.pause();
 });
-
 
 const play = () => {
   modelViewer.play();
