@@ -125,19 +125,6 @@ Try and grab the UCD logo and give it a spin.
     background-color="#ffffff">
 </model-viewer>
 </div>
-
-<div class="container">
-<model-viewer 
-    id="cloth-control-demo"
-    src="https://nolankucd.github.io/SATLE_FLAME_UCD/cloth_bunny.glb"
-    autoplay animation-name="KeyAction" 
-    camera-controls
-    camera-orbit="20deg 45deg 2m"
-    field-of-view="24deg"
-    alt="Revealing the Stanford Bunny"
-    background-color="#ffffff">
-</model-viewer>
-</div>
 <div class="controls">
     <div>
         <p>Scrub to select time: <span id="scrub-value"></span></p>
@@ -238,14 +225,9 @@ playPauseButton.addEventListener("click", () => {
 
 modelViewer.pause();
 </script>
-    
-<script type="module">
-const modelViewer = document.querySelector("#cloth-animation-demo");
-modelViewer.interactionPrompt = 'none';
-</script>
 
 <script type="module">
-const modelViewer = document.querySelector("#cloth-control-demo");
+const modelViewer = document.querySelector("#cloth-animation-demo");
 const scrubSlider = document.querySelector("#scrub");
 
 modelViewer.interactionPrompt = 'none';
