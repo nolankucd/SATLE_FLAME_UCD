@@ -68,7 +68,7 @@
 <p>
 <div class="container">
 <model-viewer 
-    id="interactive-UCD-logo"
+    id="UCD-logo"
     src="https://nolankucd.github.io/SATLE_FLAME_UCD/UCD.glb"
     camera-controls
     camera-orbit="10deg 86deg 16m"
@@ -283,6 +283,11 @@ The funding will focus on innovations in education for sustainable development, 
 <div class="container">
     <img src="https://www.teachingandlearning.ie/wp-content/uploads/preview_twitter-copy.png" width="500" height=auto alt="SATLE">
 </div>
+
+<script type="module">
+const modelViewer = document.querySelector("#UCD-logo");
+modelViewer.interactionPrompt = 'none';
+</script>
 
 <script type="module">
 const modelViewer = document.querySelector("#interactive-UCD-logo");
