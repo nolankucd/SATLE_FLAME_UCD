@@ -171,14 +171,17 @@ Try and grab the UCD logo and give it a spin.
     camera-controls
     alt="A simple four cylinder engine"
     background-color="#ffffff">
+    ar
+    ar-scale="auto" 
+    xr-environment
+    <button slot="ar-button">
+      🔥 View in AR 🔥
+    </button>
 </model-viewer>
 </div>
 <div style="position: relative;">
   <button id="play-pause">Pause</button>
-</div>
-<div style="position: relative;">
-   <button id="ar-button">VIEW IN AR</button>
-</div>    
+</div> 
 <div class="container">
 <p>
     While the combination of translation, rotation and scale is powerful, many systems we wish to teach about undergo complex deformations.
@@ -387,19 +390,6 @@ modelViewer.addEventListener('finished', play);
 const modelViewer = document.querySelector("#bridge-demo");
 modelViewer.interactionPrompt = 'none';
 </script>
-
-  <script>
-    const arButton = document.getElementById('ar-button');
-    const modelViewer = document.querySelector('model-viewer');
-
-    arButton.addEventListener('click', () => {
-      if (modelViewer.canActivateAR) {
-        modelViewer.activateAR();
-      } else {
-        console.error('AR mode is not supported.');
-      }
-    });
-  </script>
 
 </body>
 
