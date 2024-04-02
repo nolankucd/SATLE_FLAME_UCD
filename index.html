@@ -33,6 +33,12 @@
        padding: 20px 20px;
        z-index: 1;
      }
+     #ar-button {
+       top: 40px;
+       left: 20px;
+       padding: 20px 20px;
+       z-index: 1;
+     }
      #play-pause-cloth {
        top: 40px;
        left: 20px;
@@ -170,7 +176,9 @@ Try and grab the UCD logo and give it a spin.
 <div style="position: relative;">
   <button id="play-pause">Pause</button>
 </div>
-    
+<div style="position: relative;">
+   <button id="ar-button">VIEW IN AR</button>
+</div>    
 <div class="container">
 <p>
     While the combination of translation, rotation and scale is powerful, many systems we wish to teach about undergo complex deformations.
@@ -380,7 +388,21 @@ const modelViewer = document.querySelector("#bridge-demo");
 modelViewer.interactionPrompt = 'none';
 </script>
 
+  <script>
+    const arButton = document.getElementById('ar-button');
+    const modelViewer = document.querySelector('model-viewer');
+
+    arButton.addEventListener('click', () => {
+      if (modelViewer.canActivateAR) {
+        modelViewer.activateAR();
+      } else {
+        console.error('AR mode is not supported.');
+      }
+    });
+  </script>
+
 </body>
+
 
 
 
